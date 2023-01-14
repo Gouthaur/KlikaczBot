@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace KlikaczBot
 {
-    public partial class Form1 : Form
+    public partial class DobraForma : Form
     {
-        public Form1()
+        public DobraForma()
         {
             InitializeComponent();
         }
