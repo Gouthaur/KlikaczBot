@@ -1,5 +1,4 @@
-﻿using KlikaczBot.BrowserInteractions;
-using PuppeteerSharp;
+﻿using PuppeteerSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +11,7 @@ using System.Windows.Forms;
 using HtmlAgilityPack;
 using Microsoft.VisualBasic.ApplicationServices;
 using System.Runtime.InteropServices;
+using KlikaczBot.BrowserInteractions.BrowserConnection;
 
 namespace KlikaczBot
 {
@@ -46,16 +46,21 @@ namespace KlikaczBot
 
         private async void btnClick_Click(object sender, EventArgs e)
         {
+            // IBrowserFetcher fecher = new BrowserFetcher();
+            ///var revison =   await fecher.DownloadAsync();
+            //var options = new ConnectOptions()
+            //{
+            //    BrowserURL = @"http://127.0.0.1:9222", DefaultViewport = null
+            //};
             
-            IBrowserFetcher fecher = new BrowserFetcher();
-            await fecher.DownloadAsync();
+            BrowserConnectionManager browserConnection =
+                new(@"http://127.0.0.1:9222",
+                new BrowserFetcher(),
+                new PuppetierStaticCallsWraper());
 
-            var options = new ConnectOptions()
-            {
-                BrowserURL = @"http://127.0.0.1:9222", DefaultViewport = null
-            };
-            var browser = await Puppeteer.ConnectAsync(options);
+            var browser = await browserConnection.ConnectToBrowserAsync();
             //var pages = await browser.PagesAsync();
+            
             var checkingPage = await browser.NewPageAsync();
 
             await checkingPage.GoToAsync(SiteUrl);
@@ -74,13 +79,8 @@ namespace KlikaczBot
             ///htmlDocument.LoadHtml(siteHtmlString);
             //var buttons =  htmlDocument.DocumentNode.SelectNodes("//button");
             //var buttonNodes = htmlDocument.DocumentNode.DescendantsAndSelf().Where(x => x.HasClass("Button")).ToList();
-            
-
             //var page = pages.Where( p => p.Url = );
-
-
             //var checkingPage = await browser.NewPageAsync();
-
             //await checkingPage.GoToAsync(@"https://bot.sannysoft.com/");
             //await checkingPage.GoToAsync(@"https://nowsecure.nl/");
 
@@ -89,11 +89,6 @@ namespace KlikaczBot
             //var page = await browser.NewPageAsync();
             //await page.GoToAsync(@"https://bot.sannysoft.com/");
 
-        }
-
-        private void labXButtonPos_Click(object sender, EventArgs e)
-        {
-
-        }
+        }               
     }
 }

@@ -70,8 +70,7 @@
             this.labXButtonPos.Name = "labXButtonPos";
             this.labXButtonPos.Size = new System.Drawing.Size(22, 25);
             this.labXButtonPos.TabIndex = 10;
-            this.labXButtonPos.Text = "0";
-            this.labXButtonPos.Click += new System.EventHandler(this.labXButtonPos_Click);
+            this.labXButtonPos.Text = "0";          
             // 
             // labYButtonPos
             // 
