@@ -1,11 +1,11 @@
 ﻿using PuppeteerSharp;
 
-namespace KlikaczBot.BrowserInteractions.BrowserPageManager
-{
-    public interface IBrowserPageManager
-    {
-        IPage Page { get; }
+namespace KlikaczBot.BrowserInteractions.BrowserPageManager;
 
-        Task CreateAndGoToNewPage(string url, NavigationOptions options);
-    }
+public interface IBrowserPageManager
+{
+    IPage Page { get; }
+
+    Task ClosePageAsyc(PageCloseOptions pageCloseOptions);
+    Task CreateAndGoToNewPageAsyc(string url, NavigationOptions options);
 }

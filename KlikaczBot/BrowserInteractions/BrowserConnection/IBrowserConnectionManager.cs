@@ -1,11 +1,10 @@
 ﻿using PuppeteerSharp;
 
-namespace KlikaczBot.BrowserInteractions.BrowserConnection
-{
-    public interface IBrowserConnectionManager
-    {
-        RevisionInfo? RevisionInfo { get; }
+namespace KlikaczBot.BrowserInteractions.BrowserConnection;
 
-        Task<IBrowser> ConnectToBrowserAsync();
-    }
+public interface IBrowserConnectionManager
+{
+    RevisionInfo? RevisionInfo { get; }
+
+    Task<IBrowser> ConnectToBrowserAsync();
 }
